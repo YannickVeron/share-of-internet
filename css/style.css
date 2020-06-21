@@ -23,7 +23,39 @@
 #countryDetail tr{
 	cursor: pointer;
 }
+.info{
+	background-color: #97ebdb;
+	margin: 15px;
+	padding: 15px;
+}
 
 tr.odd{
 	background-color: #97ebdb !important;
 }
+
+.btn {
+  background-color: #e7e7e7;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer
+}
+.btn:hover {
+	background-color: #c0c0c0;
+}
+
+.btn-success {background-color: #4CAF50;} /* Green */
+.btn-info {background-color: #008CBA;} /* Blue */
+.btn-danger {background-color: #f44336;} /* Red */
+.btn-light {background-color: #e7e7e7; color: black;} /* Gray */
+.btn-dark {background-color: #555555;} /* Black */
+
+.btn-success:hover {background-color: #285d2a;} /* Green */
+.btn-info:hover {background-color: #00607f;} /* Blue */
+.btn-danger:hover {background-color: #730e06;} /* Red */
+.btn-light:hover {background-color: #c0c0c0; color: black;} /* Gray */
+.btn-dark:hover {background-color: #414141;} /* Black */

@@ -47,10 +47,16 @@ var app = new Vue({
 			});
 			let instance = this;
 			$('#countryList tbody').on('click', 'tr', function () {
+
 		        var data = table.row( this ).data();
 		        if(instance.selectedCountry!=data[1]){
 		        	instance.selectedCountry=data[1]
 		        	instance.initDetailTable()
+		        	Vue.nextTick(function(){
+			        	$('html, body').animate({
+				            scrollTop: $('#countryDetail').offset().top
+				        },3000); 
+				    })
 		        }else{
 		        	instance.selectedCountry=""
 		        	$("#countryDetailCountainer").hide()

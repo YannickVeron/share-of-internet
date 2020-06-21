@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Internet à travers le monde</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"></link>
 
@@ -10,9 +10,13 @@
 <body>
 	<main id="app">
 		<h1>Internet à travers le monde en {{selectedYear}}</h1>
+		<div class="info">
+			Vous pouvez cliquer sur un pays ou sur le cercle représentant un pays pour accéder aux détails de celui-ci.
+		</div>
 	  	<form>
 			<p>Veuillez choisir la méthode d'affichage (du plus au moins gourmand) :</p>
 		  	<div>
+		  		<b>Affichage :</b>
 		    	<input type="radio" id="fullColorLabel" name="method" value="full" v-model="displayMethod">
 		    	<label for="fullColorLabel">Full</label>
 		    	<input type="radio" id="dots" name="method" value="light" v-model="displayMethod">
@@ -21,17 +25,20 @@
 		    	<label for="fullColor">Optimisé</label>
 		  	</div>
 		  	<div>
+		  		<b>Projection : </b>
 		  		<input type="radio" id="Miller" name="projection" value="Miller" v-model="projection">
 		    	<label for="Miller">Miller</label>
 		    	<input type="radio" id="Orthographic" name="projection" value="Orthographic" v-model="projection">
 		    	<label for="Orthographic">Orthographic</label>
 		  	</div>
 		  	<div>
-		  		<button type="button" @click="displayMap">Afficher</button>
+		  		<button type="button" class="btn btn-info" @click="displayMap" v-if="serie==null">Afficher</button>
+		  		<button type="button" class="btn btn-info" @click="displayMap" v-else>Rafraichir</button>
+
 		  	</div>
 		</form>
 		<div id="chartdiv"></div>
-
+		<div class="info">Vous pouvez également cliquer sur la ligne d'un pays pour voir ses détails.</div>
 		<table id="countryList" class="hover stripe">
 			<thead>
 				<th></th>
@@ -41,14 +48,6 @@
 				<th>%</th>
 			</thead>
 			<tbody>
-				<!--<template v-for="(country,code,index) in countries">
-					<tr v-for='(value,year) in country.Share'>
-						<td>{{code}}</td>
-						<td>{{country.Entity}}</td>
-						<td>{{year}}</td>
-						<td>{{getValueForYear(value,2016)}}</td>
-					</tr>
-				</template>-->
 				<tr v-for="(country,code,index) in countries">
 					<td><img :src="country.flag" style="height: 25px"></td>
 					<td>{{code}}</td>
@@ -63,6 +62,9 @@
 				Accès à internet : {{countries[selectedCountry].Entity}}
 				<img v-if="selectedCountry!=''" :src="countries[selectedCountry].flag" style="height: 25px;">
 			</h3>
+			<div class="info">
+				Cliquer sur une ligne pour pouvoir l'éditer.
+			</div>
 			<table id="countryDetail" class="hover stripe" v-show="selectedCountry!=''">
 				<thead>
 					<th>Year</th>
@@ -79,13 +81,13 @@
 			</table>
 			
 			<div id="entry">
-				<button type="button" @click="addEntry">Ajouter une entrée</button>
+				<button type="button" class="btn btn-info" @click="addEntry">Ajouter une entrée</button>
 				<span v-show="editData.Code!=null">
 					<label for="year">Année : </label>
 					<input type="number" name="year" v-model="editData.Year">
 					<label for="percentage">Pourcentage : </label>
 					<input type="number" name="percentage" v-model="editData.Percentage">
-					<button type="button" @click="submitData">Valider</button>
+					<button type="button" class="btn btn-success" @click="submitData">Valider</button>
 				</span>
 			</div>
 		</span>
