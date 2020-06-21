@@ -69,12 +69,14 @@
 				<thead>
 					<th>Year</th>
 					<th>%</th>
+					<th></th>
 				</thead>
 				<tbody>
 					<template v-if="selectedCountry!=''">
 						<tr v-for="(value,year) in countries[selectedCountry].Share">
 							<td>{{year}}</td>
 							<td>{{value}}</td>
+							<td><button @click.stop="deleteYear(year)" class="btn btn-sm btn-danger">Supprimer</button></td>
 						</tr>
 					</template>
 				</tbody>

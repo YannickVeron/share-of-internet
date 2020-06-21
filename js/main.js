@@ -43,6 +43,8 @@ var app = new Vue({
 			let table  = $('#countryList').DataTable();
 			table.destroy();
 			table = $("#countryList").DataTable({
+				order: [[1, 'asc']],
+				"columnDefs": [{"orderable": false, "targets": 0 }],
 				"pageLength": 20
 			});
 			let instance = this;
@@ -70,7 +72,12 @@ var app = new Vue({
 			}
 			let instance = this
 			Vue.nextTick(function(){
-				let detailTable = $("#countryDetail").DataTable({})
+				let detailTable = $("#countryDetail").DataTable({
+					"columnDefs": [{
+						"targets": 2,
+						"orderable": false
+					}]
+				})
 				$('#countryDetail tbody').on('click', 'tr', function () {
 			        var data = detailTable.row(this).data();
 			        instance.editData={"Entity":instance.countries[instance.selectedCountry].Entity,"Year":data[0],"Percentage":data[1],"Code":instance.selectedCountry}
@@ -294,6 +301,11 @@ var app = new Vue({
 		},
 		submitData:function(){
 			this.$http.post("update",this.editData).then(function(response){
+				document.location.reload(true);
+			})
+		},
+		deleteYear:function(year){
+			this.$http.post("delete",{"Code":this.selectedCountry,"Year":year}).then(function(response){
 				document.location.reload(true);
 			})
 		}

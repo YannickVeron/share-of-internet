@@ -34,4 +34,11 @@ app.post("/update",function(req,res){
 	)
 })
 
+app.post("/delete",function(req,res){
+	db.collection("internet").deleteOne(req.body, function(err, obj) {
+		res.json({delete:"ok"})
+	})
+
+})
+
 app.listen(1337)

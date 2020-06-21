@@ -47,6 +47,9 @@ tr.odd{
 .btn:hover {
 	background-color: #c0c0c0;
 }
+.btn-sm{
+	padding: 5px 16px;
+}
 
 .btn-success {background-color: #4CAF50;} /* Green */
 .btn-info {background-color: #008CBA;} /* Blue */
