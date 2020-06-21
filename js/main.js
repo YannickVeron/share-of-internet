@@ -1,7 +1,7 @@
 var app = new Vue({
 	el:'#app',
 	data:{
-		yearsLimits:{"min":1990,"max":2016},
+		yearsLimits:{"min":1990,"max":null},
 		countries:{},
 		selectedYear:1990,
 		serie:null,
@@ -19,6 +19,9 @@ var app = new Vue({
 					lastCode=countryYear.Code
 				}else{
 					this.countries[countryYear.Code]["Share"][countryYear.Year]=countryYear.Percentage
+				}
+				if(this.yearsLimits.max==null||this.yearsLimits.max<countryYear.Year){
+					this.yearsLimits.max=countryYear.Year
 				}
 			}
 			let mergedCodes = Object.keys(this.countries).join(';')
