@@ -77,11 +77,16 @@
 					</template>
 				</tbody>
 			</table>
-			<button type="button" @click="addEntry">Ajouter une entrée</button>
+			
 			<div id="entry">
-				<input type="number" name="year" v-model="editData.Year">
-				<input type="number" name="percentage" v-model="editData.Percentage">
-				<button type="button" @click="submitData">Valider</button>
+				<button type="button" @click="addEntry">Ajouter une entrée</button>
+				<span v-show="editData.Code!=null">
+					<label for="year">Année : </label>
+					<input type="number" name="year" v-model="editData.Year">
+					<label for="percentage">Pourcentage : </label>
+					<input type="number" name="percentage" v-model="editData.Percentage">
+					<button type="button" @click="submitData">Valider</button>
+				</span>
 			</div>
 		</span>
 	</main>

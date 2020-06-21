@@ -283,9 +283,8 @@ var app = new Vue({
 			this.editData={"Entity":this.countries[this.selectedCountry].Entity,"Year":null,"Percentage":null,"Code":this.selectedCountry}
 		},
 		submitData:function(){
-			console.log(this.editData)
 			this.$http.post("update",this.editData).then(function(response){
-				console.log(response)
+				document.location.reload(true);
 			})
 		}
 	}
