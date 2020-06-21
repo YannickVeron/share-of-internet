@@ -165,6 +165,10 @@ var app = new Vue({
 				polygonTemplate.tooltipText = "{name}";
 			}
 			polygonTemplate.polygon.fillOpacity = 0.6;
+			chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#aadaff");
+			chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
+
+
 			let onHit=(ev)=>{
 				let anim = ev.target.series.chart.zoomToMapObject(ev.target);
 				anim.events.on("animationended",(evt)=>{
