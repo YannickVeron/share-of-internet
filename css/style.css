@@ -1,0 +1,29 @@
+/*
+#daf8e3 	(218,248,227)
+#97ebdb 	(151,235,219)
+#00c2c7 	(0,194,199)
+#0086ad 	(0,134,173)
+#005582 	(0,85,130)
+
+#393e46
+#222831
+*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#chartdiv{
+	height: 100vh;
+}
+
+#countryList tr{
+	cursor: pointer;
+}
+
+#countryDetail tr{
+	cursor: pointer;
+}
+
+tr.odd{
+	background-color: #97ebdb !important;
+}
